@@ -1,0 +1,172 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>MBL's Movie Trailer Website </title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;M
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    
+            
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body style="background-color:beige">
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1LGiUsb6AMM" data-toggle="modal" data-target="#trailer">
+    <img src="http://t3.gstatic.com/images?q=tbn:ANd9GcSp1xUUrh6IW4gwa8j7p8WxU7Yt21mWhLVwZ5CejaXF6KsrOtjs" width="220" height="342">
+    <h2><b>X Men: Days of Future Past</b></h2>
+    <h4><i>The ultimate X-Men ensemble fights a war for the survival of the species across time periods in X MEN: DAYS OF FUTURE PAST</i></h4>
+    <h4><i>Release date: May 23, 2014 (USA)</i></h4>
+    <h4>Stars: Hugh Jackman, James McAvoy, Jennifer Lawrence</h4>
+    
+    
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="LPEzoOifD1k" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.framedart.com/product-images/AWAAQAHQ-P182107.jpg" width="220" height="342">
+    <h2><b>Fist of Legend</b></h2>
+    <h4><i>In 1937 a Chinese martial artist returns to Shanghai to find his teacher dead and his school harassed by the Japanese.</i></h4>
+    <h4><i>Release date: December 22, 1994</i></h4>
+    <h4>Stars: Jet Li, Shinobu Nakayama, Siu-Ho Chin</h4>
+    
+    
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tB-QGOChuQc" data-toggle="modal" data-target="#trailer">
+    <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcRsH21kTB2avWroiM3X28MoN2igjrlYhMgKN4nIL3ast-FaeDmj" width="220" height="342">
+    <h2><b>Enter The Dragon</b></h2>
+    <h4><i>Bruce Lee plays a martial-arts expert determined to help capture the narcotics dealer whose gang was responsible for the death of his sister. Lee enters a kung fu competition in an attempt to fight his way to the dealer's headquarters with the help of some friends.</i></h4>
+    <h4><i>Release date: August 19, 1973 (USA)</i></h4>
+    <h4>Stars: Bruce Lee, John Saxon, Jim Kelly</h4>
+    
+    
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="g8evyE9TuYk" data-toggle="modal" data-target="#trailer">
+    <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcQSGF8_VbDqKF0B_4IQ0NF87VMDSy7_MPKryawR-qLnSIPQwo5z" width="220" height="342">
+    <h2><b>The Dark Knight Rises</b></h2>
+    <h4><i>It has been eight years since Batman(Christian Bale), in collusion with Commissioner Gordon (Gary Oldman), vanished into the night. Assuming responsibility for the death of Harvey Dent, Batman sacrificed everything for what he and Gordon hoped would be the greater good. However, the arrival of a cunning cat burglar (Anne Hathaway) and a merciless terrorist named Bane (Tom Hardy) force Batman out of exile and into a battle he may not be able to win.</i></h4>
+    <h4><i>Release date: July 20, 2012 (USA)</i></h4>
+    <h4>Stars: Christian Bale, Tom Hardy, AnneHathaway</h4>
+    
+    
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="fgFPIh5mvNc" data-toggle="modal" data-target="#trailer">
+    <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcRMqx0vTbNTmr3Ms_byitC6LnBPBOJ_fmbqP1iI_YRRa3SJrRFX" width="220" height="342">
+    <h2><b>Brams Stoker Dracula</b></h2>
+    <h4><i>Adaptation of Bram Stoker's classic vampire novel. Gary Oldman plays Dracula whose lonely soul is determined to reunite with his lost love, Mina (Winona Ryder). In Britain Dracula begins a reign of terror and seduction draining the life from her closest friend, Lucy (Sadie Frost). Together they try and drive Dracula away.</i></h4>
+    <h4><i>Release date: November 13, 1992 (USA)</i></h4>
+    <h4>Stars: Gary Oldman, Winona Ryder</h4>
+    
+    
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tmw1Llp92PU" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/dvdboxart/386/p386_d_v7_aa.jpg" width="220" height="342">
+    <h2><b>Cooley_High</b></h2>
+    <h4><i>Richard (Cochise) Morris (Lawrence-HiltonJacobs) a local basketball hero, and Leroy (Preach) Jackson (Glynn Turman), who dreams of a career in writing, are likable Chicago high school students in 1960s Chicago. They're into hanging out with friends, pretty girls and the Motown sounds so popular during the era. Each wants to make it big in his own way, but not everybody they meet is looking out for them, as they learn when a seemingly harmless outing goes awry.</i></h4>
+    <h4><i>Release date: June 25, 1975</i></h4>
+    <h4>Stars: Glynn Turman and Lawrence Hilton-Jacobs</h4>
+    
+    
+</div>
+
+      
+    </div>
+  </body>
+</html>
